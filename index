@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #000000;
+  background-image: url('https://i.ibb.co/kQXftFn/Bande1.png');
+  background-repeat: repeat;
+  color: #FFFFFF;
+  font-family: 'Roboto Slab', serif;
+}
+a {
+  color: #FFFFFF;
+}
+
+.input {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #FFFFFF;
+  margin-bottom: 12px;
+}
+.occulte {
+  background-color: #FFFFFF;
+}
+
+#myTable {
+  border-collapse: collapse;
+  margin-left:auto;
+  margin-right:auto;
+  width: 70%;
+  border: 1px solid #BFBFBF;
+  font-size: 18px;
+}
+#myTable th, #myTable td {
+  text-align: center;
+  padding: 12px;
+}
+#myTable th, #myTable td:first-child {
+  text-align: left;
+}
+#myTable tr {
+  border-bottom: 1px solid #BFBFBF;
+}
+#myTable tr.header {
+  background-color: #3F3F3F;
+}
+#myTable tr:hover {
+  background-color: #808080;
+  color: #000000;
+}
+#inputNom {
+  margin-left:15%;
+  width:12%;
+}
+#inputTrait {
+  margin-left:2%;
+  width:13%;
+}
+#inputDesc {
+  margin-left:2%;
+  width:41%;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+//$(document).ready(function () {
+//	$(".occulte").replaceWith("<span class=\"occulte\">Propriété occulte inconnue.</span>");
+//});
+
+function filtreNom() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("inputNom");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+function filtreTrait() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("inputTrait");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+function filtreDesc() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("inputDesc");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+</head>
+<title>WTS - Objets</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<body>
+<div style="border-bottom:solid white; padding-bottom:6px; margin-bottom:20px">
+	<span style=" font-size:2em;"><img style="vertical-align:bottom" src="https://i.ibb.co/M8N5sr4/Titre.png"> <b>|</b>&ensp;L'équipement</span>
+	<span style="font-size:1em; float:right"><a href="https://emtsuaf.github.io/wts/Accueil.html">Accueil</a> | <a href="https://emtsuaf.github.io/wts/Talents.html">Talents</a></span>
+</div>
+
+<span style="width:18%"><input type="text" class="input" id="inputNom" onkeyup="filtreNom()" placeholder="Chercher un nom..."></span><span style="width:18%"><input type="text" class="input" id="inputTrait" onkeyup="filtreTrait()" placeholder="Chercher un trait..."></span><span style="width:79%"><input type="text" class="input" id="inputDesc" onkeyup="filtreDesc()" placeholder="Chercher une description..."></span>
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:20%;">Nom</th>
+    <th style="width:15%; text-align:center">Traits</th>
+    <th style="width:75%; text-align:center">Description</th>
+  </tr>
+  <tr>
+    <td><b>Loutre-poulpe</b></td>
+    <td>Aquatique, Bandle City, Faune</td>
+    <td><i>« Curieux et joueurs, les loutres-poulpes sont extrêmement joyeux. Drôle de bête, tout de même. Au fait, où est passé mon troisième sandwitch ? » - Journal écologique du Conchyliologue, jour 7</i> </td>
+    <td><img style="vertical-align:bottom" src="https://wiki.leagueoflegends.com/en-us/images/05BC004-full.png?43d92"></td>
+  </tr>
+
+
+</table>
+
+</body>
+</html>
